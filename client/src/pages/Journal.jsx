@@ -33,7 +33,7 @@ const uploadImageForTrade = async (tradeId, file) => {
   const formData = new FormData();
   formData.append("image", file);
 
-  await fetch(`${import.meta.env.vite_api_url}/api/trades/${tradeId}/image`, {
+  await fetch(`${import.meta.env.VITE_API_URL}/api/trades/${tradeId}/image`, {
     method: "PUT",
     headers: {
       Authorization: localStorage.getItem("accessToken"),
@@ -53,7 +53,7 @@ const uploadImageForTrade = async (tradeId, file) => {
 };
 
 const deleteImageForTrade = async (tradeId) => {
-  await fetch(`${import.meta.env.vite_api_url}/api/trades/${tradeId}/image`, {
+  await fetch(`${import.meta.env.VITE_API_URL}/api/trades/${tradeId}/image`, {
     method: "DELETE",
     headers: {
       Authorization: localStorage.getItem("accessToken"),
@@ -67,7 +67,7 @@ const deleteImageForTrade = async (tradeId) => {
 
   try {
     const res = await fetch(
-      `${import.meta.env.vite_api_url}/api/stocks?q=${inputValue}`
+      `${import.meta.env.VITE_API_URL}/api/stocks?q=${inputValue}`
     );
 
     const data = await res.json();
@@ -86,7 +86,7 @@ const deleteImageForTrade = async (tradeId) => {
   
 
   const fetchTrades = async () => {
-    const res = await fetch("${import.meta.env.vite_api_url}/api/trades", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/trades`, {
   headers: {
     Authorization: localStorage.getItem("accessToken"),
   },
@@ -129,7 +129,7 @@ const deleteImageForTrade = async (tradeId) => {
       formData.append("image", form.image);
     }
 
-    await fetch("${import.meta.env.vite_api_url}/api/trades", {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/trades`, {
   method: "POST",
   headers: {
     Authorization: localStorage.getItem("accessToken"),
@@ -172,7 +172,7 @@ const deleteImageForTrade = async (tradeId) => {
   };
 
   const saveEdit = async (id) => {
-    await fetch(`${import.meta.env.vite_api_url}/api/trades/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/trades/${id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json",
@@ -192,7 +192,7 @@ const deleteImageForTrade = async (tradeId) => {
 
     if (!confirmDelete) return;
 
-   await fetch(`${import.meta.env.vite_api_url}/api/trades/${id}`, {
+   await fetch(`${import.meta.env.VITE_API_URL}/api/trades/${id}`, {
   method: "DELETE",
   headers: {
     Authorization: localStorage.getItem("accessToken"),
@@ -376,13 +376,14 @@ const deleteImageForTrade = async (tradeId) => {
           <td className="chart-cell">
   {trade.image_path ? (
     <div className="image-wrapper">
+      console.log(import.meta.env.VITE_API_URL);
       <img
-        src={`${import.meta.env.vite_api_url}${trade.image_path}`}
+        src={`${import.meta.env.VITE_API_URL}${trade.image_path}`}
         alt="chart"
         className="trade-thumb"
         onClick={() =>
           setZoomImage(
-            `${import.meta.env.vite_api_url}${trade.image_path}`
+            `${import.meta.env.VITE_API_URL}${trade.image_path}`
           )
         }
       />
