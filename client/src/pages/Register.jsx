@@ -15,7 +15,11 @@ function Register({setPage}) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify({
+    name,
+    email,
+    password
+  }),
     });
 
     const data = await res.json();
