@@ -379,7 +379,7 @@ const deleteImageForTrade = async (tradeId) => {
       console.log(import.meta.env.VITE_API_URL);
       <img
         src={`${import.meta.env.VITE_API_URL}${trade.image_path}`}
-        alt="chart"
+        alt="chart" 
         className="trade-thumb"
         onClick={() =>
           setZoomImage(

@@ -10,9 +10,19 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
-app.use(cors({
-  origin: process.env.FRONTEND_URL
-}));
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (origin === process.env.FRONTEND_URL) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // PostgreSQL connection
