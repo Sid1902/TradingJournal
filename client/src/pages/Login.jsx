@@ -9,7 +9,7 @@ function Login({ setIsAuthenticated, setPage }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/login", {
+    const res = await fetch("${import.meta.env.vite_api_url}/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
