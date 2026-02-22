@@ -376,7 +376,7 @@ const deleteImageForTrade = async (tradeId) => {
           <td className="chart-cell">
   {trade.image_path ? (
     <div className="image-wrapper">
-      console.log(import.meta.env.VITE_API_URL);
+      
       <img
         src={`${import.meta.env.VITE_API_URL}${trade.image_path}`}
         alt="chart" 
